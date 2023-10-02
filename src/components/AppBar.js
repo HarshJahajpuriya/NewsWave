@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import AppBarMenu from './AppBarMenu';
-import CATEGORIES from '../utils/contants/category';
+import CATEGORIES from '../utils/constants/category';
 import CountrySelect from './CountrySelector';
 
 const Search = styled('div')(({ theme }) => ({
@@ -74,10 +74,12 @@ export default function SearchAppBar({ updateCategory, updateQuery }) {
             sx={{ flexGrow: 1, cursor: 'pointer' }}
           >
             NewsWave
-            {/* <CountrySelect /> */}
           </Typography>
           
           <Box sx={{ display: { md: 'none', lg: 'block', sm: 'none', xs: 'none' } }}>
+            <Button sx={{ color: '#fff' }}>
+              <CountrySelect />
+            </Button>
             {CATEGORIES.map((item) => (
               <Button id={item} key={item} sx={{ color: '#fff' }} onClick={changeCategory}>
                 {item}

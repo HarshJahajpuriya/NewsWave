@@ -5,7 +5,7 @@ import Container from '@mui/material/Container'
 import BackDrop from './Backdrop';
 import React from 'react';
 import BottomNav from './BottomNavigation';
-import API_KEY from '../utils/contants/API_KEY';
+import API_KEY from '../utils/constants/API_KEY';
 
 
 export default function NewsContainer({ countryCode, pageSize, category, query }) {

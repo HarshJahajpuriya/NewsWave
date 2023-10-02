@@ -7,7 +7,7 @@ export default function CountrySelect() {
   return (
     <Autocomplete
       id="country-select-demo"
-      sx={{ width: 200, height: '32px', display: 'inline-block' }}
+      sx={{ width: 200, height: '32px', display: 'inline-block', color: 'white' }}
       options={countries}
       autoHighlight
       getOptionLabel={(option) => option.label}
@@ -25,9 +25,9 @@ export default function CountrySelect() {
       )}
       renderInput={(params) => (
         <TextField
-          sx={{color: 'GrayText'}}
+          sx={{color: 'white', }}
           {...params}
-          // label="Choose a country"
+          label="Choose a country"
           inputProps={{
             ...params.inputProps,
             autoComplete: 'new-password', // disable autocomplete and autofill

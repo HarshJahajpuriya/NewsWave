@@ -8,7 +8,7 @@ import { styled, alpha } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
-import CATEGORIES from '../utils/contants/category';
+import CATEGORIES from '../utils/constants/category';
 import TextField from '@mui/material/TextField';
 
 export default function AppBarMenu({ updateCategory }) {
