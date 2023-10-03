@@ -6,6 +6,7 @@ import '@fontsource/roboto/700.css';
 import AppBar from './components/AppBar';
 import React from 'react';
 import NewsContainer from './components/NewsContainer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -27,10 +28,12 @@ function App() {
   }
 
   return ( 
-    <>
+    <BrowserRouter>
       <AppBar updateCategory={changeCategory} updateQuery={changeQuery} updateCountry={changeCountry}/>
-      <NewsContainer countryCode={country.code} pageSize={pageSize} category={category} query={query}/>
-    </>
+      <Routes>
+        <Route exact path='/NewsWave' element={<NewsContainer countryCode={country.code} pageSize={pageSize} category={category} query={query}/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
