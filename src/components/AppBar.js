@@ -9,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import AppBarMenu from './AppBarMenu';
 import CATEGORIES from '../utils/constants/category';
-import CountrySelect from './CountrySelector';
+import CountrySelector from './CountrySelector';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -52,10 +52,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar({ updateCategory, updateQuery }) {
+export default function Appbar({ updateCategory, updateQuery, updateCountry }) {
 
-  const changeCategory = (ev) => {
-    updateCategory(ev.target.id);
+  const changeCategory = (el) => {
+    updateCategory(el.target.id);
+  }
+
+  const changeCountry = (country) => {
+    updateCountry(country)
   }
 
   const queryNews = (ev) => {
@@ -74,12 +78,10 @@ export default function SearchAppBar({ updateCategory, updateQuery }) {
             sx={{ flexGrow: 1, cursor: 'pointer' }}
           >
             NewsWave
+            <CountrySelector changeCountry={changeCountry}/>
           </Typography>
           
           <Box sx={{ display: { md: 'none', lg: 'block', sm: 'none', xs: 'none' } }}>
-            <Button sx={{ color: '#fff' }}>
-              <CountrySelect />
-            </Button>
             {CATEGORIES.map((item) => (
               <Button id={item} key={item} sx={{ color: '#fff' }} onClick={changeCategory}>
                 {item}

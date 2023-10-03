@@ -10,7 +10,7 @@ import NewsContainer from './components/NewsContainer';
 function App() {
 
   const [category, setCategory] = React.useState("general");
-  const [countryCode, setCountryCode] = React.useState("in");
+  const [country, setCountry] = React.useState({ code: 'IN', label: 'India', phone: '91' });
   const [pageSize, setPageSize] = React.useState(6);
   const [query, setQuery] = React.useState("");
 
@@ -18,14 +18,18 @@ function App() {
     setCategory(category)
   }
 
-  const updateQuery = (q) => {
+  const changeCountry = (c) => {
+    setCountry(c)
+  }
+
+  const changeQuery = (q) => {
     setQuery(q);
   }
 
   return ( 
     <>
-      <AppBar updateCategory={changeCategory} updateQuery={updateQuery}/>
-      <NewsContainer countryCode={countryCode} pageSize={pageSize} category={category} query={query}/>
+      <AppBar updateCategory={changeCategory} updateQuery={changeQuery} updateCountry={changeCountry}/>
+      <NewsContainer countryCode={country.code} pageSize={pageSize} category={category} query={query}/>
     </>
   );
 }

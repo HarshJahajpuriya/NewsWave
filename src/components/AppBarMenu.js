@@ -3,13 +3,10 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import CATEGORIES from '../utils/constants/category';
-import TextField from '@mui/material/TextField';
 
 export default function AppBarMenu({ updateCategory }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -35,32 +32,6 @@ export default function AppBarMenu({ updateCategory }) {
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
-    },
-  }));
-  
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
-  
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
-      },
     },
   }));
 
@@ -90,18 +61,6 @@ export default function AppBarMenu({ updateCategory }) {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        {/* <Search
-          sx={{ mr: 1, display: { md: 'none', sm: 'none', xs: 'block' } }}
-        >
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Keyword..."
-            inputProps={{ 'aria-label': 'search' }}
-          />
-          <Divider />
-        </Search> */}
         {CATEGORIES.map((item) => (
           <span key={item}>
             <MenuItem id={item} onClick={handleClose}>{item}</MenuItem>

@@ -29,7 +29,7 @@ export default function NewsContainer({ countryCode, pageSize, category, query }
   React.useEffect(() => {
     updateNews(topHealinesURL);
     setPageNumber(1)
-  }, [category])
+  }, [category, countryCode])
 
 
   const updateNews = async (url) => {
