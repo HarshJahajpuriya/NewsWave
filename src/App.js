@@ -10,10 +10,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
 
-  const [category, setCategory] = React.useState("general");
+  const [category, setCategory] = React.useState("General");
   const [country, setCountry] = React.useState({ code: 'IN', label: 'India', phone: '91' });
   const [pageSize, setPageSize] = React.useState(6);
   const [query, setQuery] = React.useState("");
+  const [heading, setHeading] = React.useState("Top Headlines")
 
   const changeCategory = (category) => {
     setCategory(category)
@@ -27,9 +28,19 @@ function App() {
     setQuery(q);
   }
 
+  React.useEffect(() => {
+    if(query) {
+      setHeading(`Top Headlines for ${query}`)
+    } else {
+      setHeading(`Top Headlines for ${category}`)
+    }
+  }, [query, category])
+
+
   return ( 
     <BrowserRouter>
       <AppBar updateCategory={changeCategory} updateQuery={changeQuery} updateCountry={changeCountry}/>
+      {/* <Box id='heading' component={'h1'} sx={{ paddingTop: "84px", textAlign: 'center', margin: 'auto', color: '#2e3137', paddingBottom: '16px'}} >{heading}</Box> */}
       <Routes>
         <Route exact path='/NewsWave' element={<NewsContainer countryCode={country.code} pageSize={pageSize} category={category} query={query}/>} />
       </Routes>

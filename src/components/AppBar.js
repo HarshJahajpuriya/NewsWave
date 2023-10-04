@@ -57,6 +57,7 @@ export default function Appbar({ updateCategory, updateQuery, updateCountry }) {
   const changeCategory = (el) => {
     updateQuery(undefined)
     updateCategory(el.target.id);
+    document.title = `${el.target.id} - NewsWave`
   }
 
   const changeCountry = (country) => {
