@@ -55,6 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Appbar({ updateCategory, updateQuery, updateCountry }) {
 
   const changeCategory = (el) => {
+    updateQuery(undefined)
     updateCategory(el.target.id);
   }
 

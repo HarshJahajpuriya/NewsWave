@@ -16,15 +16,16 @@ export default function NewsContainer({ countryCode, pageSize, category, query }
   const [articles, setArticles] = React.useState([]);
 
   const topHealinesURL = `https://newsapi.org/v2/top-headlines?country=${countryCode}&pageSize=${pageSize}&page=${pageNumber}&category=${category}&apiKey=${API_KEY}`
-  const queryURL = `https://newsapi.org/v2/top-headlines?q=${query}&apiKey=f68e36adc0d64d27940fe12df3c911de`
+  const queryURL = `https://newsapi.org/v2/top-headlines?q=${query}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${API_KEY}`
 
   React.useEffect(() => {
-    if(query) updateNews(queryURL);
+    setPageNumber(1);
   }, [query])
 
   React.useEffect(() => {
-    updateNews(topHealinesURL);
-  }, [pageNumber])
+    if(query) updateNews(queryURL);
+    else updateNews(topHealinesURL);
+  }, [query, pageNumber])
 
   React.useEffect(() => {
     updateNews(topHealinesURL);
@@ -54,14 +55,16 @@ export default function NewsContainer({ countryCode, pageSize, category, query }
   const loadNextPage = () => {
     if(pageNumber+1 <= totalPages) {
       setPageNumber(pageNumber+1);
-      updateNews(topHealinesURL);
+      if(query) updateNews(queryURL)
+      else updateNews(topHealinesURL);
     }
   }
 
   const loadPreviousPage = () => {
     if(pageNumber-1 > 0) {
       setPageNumber(pageNumber - 1);
-      updateNews(topHealinesURL);
+      if(query) updateNews(queryURL)
+      else updateNews(topHealinesURL);
     }
   }
 
